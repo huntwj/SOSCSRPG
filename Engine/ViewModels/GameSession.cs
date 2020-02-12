@@ -53,30 +53,38 @@ namespace Engine.ViewModels
             };
 
 
-            WorldFactory worldFactory = new WorldFactory();
-            CurrentWorld = worldFactory.CreateWorld();
+            CurrentWorld = WorldFactory.CreateWorld();
 
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
         }
 
+        private void MoveSafely(int deltaX, int deltaY)
+        {
+            Location nextLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate + deltaX, CurrentLocation.YCoordinate + deltaY);
+            if (nextLocation != null)
+            {
+                CurrentLocation = nextLocation;
+            }
+        }
+
         public void MoveNorth()
         {
-            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1);
+            MoveSafely(0, 1);
         }
 
         public void MoveWest()
         {
-            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate);
+            MoveSafely(-1, 0);
         }
 
         public void MoveEast()
         {
-            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate);
+            MoveSafely(1, 0);
         }
 
         public void MoveSouth()
         {
-            CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1);
+            MoveSafely(0, -1);
         }
     }
 }
