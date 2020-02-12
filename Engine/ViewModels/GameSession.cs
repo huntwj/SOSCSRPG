@@ -1,4 +1,5 @@
-﻿using Engine.Models;
+﻿using Engine.Factories;
+using Engine.Models;
 
 namespace Engine.ViewModels
 {
@@ -6,6 +7,7 @@ namespace Engine.ViewModels
     {
         public Player CurrentPlayer { get; set; }
         public Location CurrentLocation { get; set; }
+        public World CurrentWorld { get; set; }
 
         public GameSession()
         {
@@ -19,15 +21,11 @@ namespace Engine.ViewModels
                 Level = 1,
             };
 
-            CurrentLocation = new Location
-            {
-                Name = "Home",
-                XCoordinate = 0,
-                YCoordinate = -1,
-                Description = "This is your house",
-                ImageName = "/Engine;component/Images/Locations/Home.png"
-            };
+    
+            WorldFactory worldFactory = new WorldFactory();
+            CurrentWorld = worldFactory.CreateWorld();
 
+            CurrentLocation = CurrentWorld.LocationAt(0, 0);
         }
     }
 }
