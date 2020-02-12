@@ -2,16 +2,20 @@
 
 namespace Engine.ViewModels
 {
-    class GameSession
+    public class GameSession
     {
-        Player CurrentPlayer { get; set; }
+        public Player CurrentPlayer { get; set; }
 
         public GameSession()
         {
             CurrentPlayer = new Player
             {
                 Name = "Scott",
-                Gold = 1_000_000
+                CharacterClass = "Fighter",
+                HitPoints = 10,
+                Gold = 1_000_000,
+                ExperiencePoints = 0,
+                Level = 1,
             };
         }
     }
