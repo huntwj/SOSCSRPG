@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Engine.Models
 {
@@ -13,5 +9,6 @@ namespace Engine.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageName { get; set; }
+        public List<Quest> QuestsAvailableHere { get; set; } = new List<Quest>();
     }
 }
