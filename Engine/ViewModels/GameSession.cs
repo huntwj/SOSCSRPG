@@ -53,22 +53,14 @@ namespace Engine.ViewModels
 
         public bool HasMonster => CurrentMonster != null;
 
-        public bool HasLocationToNorth
-        {
-            get { return CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1) != null; }
-        }
-        public bool HasLocationToWest
-        {
-            get { return CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate) != null; }
-        }
-        public bool HasLocationToEast
-        {
-            get { return CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate) != null; }
-        }
-        public bool HasLocationToSouth
-        {
-            get { return CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1) != null; }
-        }
+        public bool HasLocationToNorth =>
+            CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1) != null;
+        public bool HasLocationToWest =>
+            CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate) != null;
+        public bool HasLocationToEast =>
+            CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate) != null;
+        public bool HasLocationToSouth =>
+            CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1) != null;
 
         public GameSession()
         {
@@ -123,7 +115,7 @@ namespace Engine.ViewModels
         }
 
         public void AttackCurrentMonster()
-        { 
+        {
             if (CurrentWeapon == null)
             {
                 RaiseMessage("To attack, you must first select a weapon.");
